@@ -1,6 +1,8 @@
 var express = require('express')
 var app = express()
 var bodyParser = require('body-parser')
+var sequelize = require('./db.js')
+var User = sequelize.import('./models/user.js')
 
 app.use(require('./middleware/headers'))
 
@@ -12,32 +14,8 @@ app.listen(3000, function(){
     console.log("app is open on 3000!")
 })
 
-var Sequelize = require('sequelize')
-var sequelize = new Sequelize('workoutlog', 'postgres', 'password21',{
-    host: 'localhost',
-    dialect: 'postgres'
-})
+User.sync() // sync({force: true}), to drop then create each time the app starts!
 
-sequelize.authenticate().then(
-    function(){
-        console.log('connected to workoutlog postgres db')
-    },
-    function(err){
-        console.log(err)
-    }
-)
-
-
-
-var User = sequelize.define('user', {
-    username: Sequelize.STRING,
-    passwordhash: Sequelize.STRING,
-}) 
-User.sync()
-/*
-This deletes the user table
-// User.sync({force: true})
-*/
 app.use(bodyParser.json())
 
 app.post('/api/user', function(req, res){
