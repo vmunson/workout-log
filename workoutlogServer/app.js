@@ -8,6 +8,10 @@ app.use('/api/test', function(req,res){
     res.send('Hello World')
 })
 
+app.listen(3000, function(){
+    console.log("app is open on 3000!")
+})
+
 var Sequelize = require('sequelize')
 var sequelize = new Sequelize('workoutlog', 'postgres', 'password21',{
     host: 'localhost',
@@ -23,26 +27,26 @@ sequelize.authenticate().then(
     }
 )
 
-app.listen(3000, function(){
-    console.log("app is open on 3000!")
-})
+
 
 var User = sequelize.define('user', {
     username: Sequelize.STRING,
     passwordhash: Sequelize.STRING,
 }) 
 User.sync()
-//User.sync({force: true})
-
+/*
+This deletes the user table
+// User.sync({force: true})
+*/
 app.use(bodyParser.json())
 
 app.post('/api/user', function(req, res){
-    var username = req.body.user.username
+    var user = req.body.user.username
     var pass = req.body.user.password
 
     User.create({
-        username: username,
-        passwordhash: ""
+        username: user,
+        passwordhash: pass
     }).then(
         function createSuccess(user){
             res.json({
