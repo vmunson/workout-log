@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 var sequelize = require('./db');
 
 
-var User = sequelize.import(__dirname + '/models/user');
+var User = sequelize.import('./models/user.js');
 //Create table
 // User.sync(); // sync( {force: true}), to drop then create each time the app starts!
 sequelize.sync()

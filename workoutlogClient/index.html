@@ -16,14 +16,14 @@
     <ul class="nav nav-tabs">
         <li class="nav-item">
             <a href="#home" id="loginout" class="disabled nav-link" data-toggle="tab">Login</a>
-        </li>    
+        </li>
         <li class="active nav-item">
             <a class="nav-link" href="#home" data-toggle="tab">Home</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#define" data-toggle="tab">Define</a>
-         </li>
-        <li class="nav-item"> 
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="#log" data-toggle="tab">Log</a>
         </li>
         <li class="nav-item">
@@ -31,7 +31,7 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#" id="testAPI">Test API</a>
-       </li>
+        </li>
     </ul>
 
     <div class="container">
@@ -47,6 +47,19 @@
                 </div>
             </div>
         </div>
+    </div>
+    <!-- Define -->
+    <div class="tab-pane" id="define">
+        <h2>Define</h2>
+        <label for="def-description">Description</label>
+        <textarea class="form-control" id="def-description" rows="3"></textarea>
+        <label for="def-logtype">Log work by</label>
+        <select class="form-control" id="def-logtype">
+            <option>Time</option>
+            <option>Weight</option>
+            <option>Reps</option>
+        </select>
+        <button id="def-save" class="btn btn-primary">Save</button>
     </div>
 
     <!--Login Modal-->
@@ -69,7 +82,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <button id="loginButton"  class="btn btn-primary">Login</button>
+                    <button id="loginButton" class="btn btn-primary">Login</button>
                 </div>
             </div>
         </div>
@@ -112,6 +125,7 @@
 
     <script src="./app.js"></script>
     <script src="./user/auth.js"></script>
+    <script src="./workouta/define.js"></script>
 </body>
 
 </html>

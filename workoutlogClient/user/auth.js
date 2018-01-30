@@ -59,7 +59,7 @@ $(function () {
         //loginout method
         loginout: function(){
             if(window.localStorage.getItem("sessionToken")){
-                window.localStorage.removeClass("sessionToken")
+                window.localStorage.removeItem("sessionToken")
                 $("#loginout").text("Login")
             }
         }

@@ -4,9 +4,10 @@ var User = sequelize.import('../models/user.js')
 var Definition = sequelize.import('../models/definition.js')
 
 router.post('/', function(req, res){
+    console.log('def post func called')
     var description = req.body.definition.desc
     var logType = req.body.definition.type
-    var owner = req.uuser.id
+    var owner = req.user.id
 
     Definition
         .create({
@@ -31,11 +32,11 @@ router.get('/', function(req, res){
 
     Definition
         .findAll({
-            where: {owner: userid}
+            where: {owner: userId}
         })
         .then(
             function findAllSuccess(data){
-                res.json(dara)
+                res.json(data)
             },
             function findAllError(err){
                 res.send(500, err.message)
