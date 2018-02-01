@@ -12,6 +12,8 @@ $(function () {
                 }
                 $("#log-definition").children().remove();
                 $("#log-definition").append(opts);
+                $("#update-definition").children().remove()
+                $("#update-definition").append(opts)
             },
 
             setHistory: function () {
@@ -56,6 +58,53 @@ $(function () {
 
                 });
             },
+            getWorkout: function(){
+                let thisLog = {id: $(this).attr('id')}
+                // console.log(thisLog)
+                logID = thisLog.id
+                let updateData = {log: thisLog}
+                let getLog = $.ajax({
+                    type: 'GET',
+                    url: WorkoutLog.API_BASE + 'log/' + logID,
+                    data: JSON.stringify(updateData),
+                    contentType: 'application/json'
+                }).done(function(data){
+                    $('a[href="#update-log"]').tab("show");
+					$('#update-result').val(data.result);
+					$('#update-description').val(data.description);
+					$('#update-id').val(data.id);
+                })
+            },
+            updateWorkout: function() {
+				$("#update").text("Update");
+				var updateLog = { 
+					id: $('#update-id').val(),
+					desc: $("#update-description").val(),
+					result: $("#update-result").val(),
+					def: $("#update-definition option:selected").text()
+				};
+				for(var i = 0; i < WorkoutLog.log.workouts.length; i++){
+					if(WorkoutLog.log.workouts[i].id == updateLog.id){
+						WorkoutLog.log.workouts.splice(i, 1);
+					}
+				}
+				WorkoutLog.log.workouts.push(updateLog);
+				var updateLogData = { log: updateLog };
+				var updater = $.ajax({
+						type: "PUT",
+						url: WorkoutLog.API_BASE + "log",
+						data: JSON.stringify(updateLogData),
+						contentType: "application/json"
+				}).done(function(data) {
+					console.log(data);
+					$("#update-description").val("");
+					$("#update-result").val("");
+					$('a[href="#history"]').tab("show");
+				}).fail(
+                    console.log('failure')
+                )
+
+			},
             delete: function () {
                 let thisLog = {
                     id: $(this).attr('id')
@@ -98,6 +147,8 @@ $(function () {
 
     $("#log-save").on("click", WorkoutLog.log.create);
     $("#history-list").delegate('.remove', 'click', WorkoutLog.log.delete)
+    $("#log-update").on("click", WorkoutLog.log.updateWorkout)
+    $("#history-list").delegate('.update', 'click', WorkoutLog.log.getWorkout)
 
     // fetch history if we already are authenticated and refreshed
     if (window.localStorage.getItem("sessionToken")) {
