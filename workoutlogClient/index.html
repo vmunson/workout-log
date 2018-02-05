@@ -40,7 +40,7 @@
 
 <!-- DEFINE -->
   <div class="tab-pane fade" id="define">
-    <h2>Define</h2>
+    <h2>What is your workout?</h2>
       <label for="def-description">Description</label>
       <textarea class="form-control" id="def-description" rows="3" ></textarea>
       <label for="def-logtype">Log work by</label>
@@ -49,20 +49,22 @@
         <option>Weight</option>
         <option>Reps</option>
       </select>
-      <button id="def-save" class="btn btn-primary">Save</button>
+      <button id="def-save" class="btn btn-primary">Add</button>
   </div>
 
   <!--Log-->
   <div class="tab-pane fade" id="log">
-    <h2>log!</h2>
+    <h2>How was your workout?</h2>
     <label>Result</label>
     <input type="text" class="form-control" id="log-result" />
     <label>Workout Select:</label>
     <select class="form-control" id="log-definition">
     </select>
+    <label>Avg. Heart Rate</label>
+    <input type="text" class="form-control" id="log-heart">
     <label>notes</label>
     <textarea class="form-control" id="log-description" rows="3"></textarea>
-    <button id="log-save" class="btn btn-primary">Save</button>
+    <button id="log-save" class="btn btn-primary">Log</button>
   </div>
   <!--UPDATING A WORKOUT SECTION-->
   <div class="tab-pane fade" id="update-log">
@@ -73,6 +75,7 @@
     <label>Workout Select:</label>
     <select class="form-control" id="update-definition">
     </select>
+    <label class="form-control" id="update-heart"></label>
     <label>notes</label>
     <textarea class="form-control" id="update-description" rows="3"></textarea>
     <br />
@@ -102,7 +105,7 @@
          </div>
          <div class="modal-footer">
            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-           <button id="login" type="button" class="btn btn-primary">Login</button>
+           <button id="loginButton" type="button" class="btn btn-primary">Login</button>
          </div>
         </div>
       </div>
@@ -116,12 +119,12 @@
             <h4 class="modal-title">Sign Up</h4>
           </div>
           <div class="modal-body">
-          <div class="alert alert-danger" role="alert" style="display:none;" id="su_error"></div>
-            <label for="su_username">Username:</label>
-            <input id="su_username" />
-            <label for="su_password">Password:</label>
-            <input type="password" id="su_password" />
-          </div>
+            <div class="alert alert-danger" role="alert" style="display:none;" id="userValidation"></div>
+              <label for="su_username">Username:</label>
+              <input id="su_username" type="email" placeholder="example@example.com" required/>
+              <label for="su_password">Password:</label>
+              <input type="password" id="su_password" required minlength="5"/>
+            </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
             <button id="signup" type="button" class="btn btn-primary">Signup</button>
@@ -137,14 +140,11 @@
   <script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 
-  <!-- <script src="app.js"></script>
-  <script src="./workouta/define.js"></script>
+  <script src="./app.js"></script> 
+ <script src="./workouta/define.js"></script>
   <script src="./workouta/log.js"></script>
-  <script src='./user/auth.js'></script> -->
+  <script src='./user/auth.js'></script>
   <!-- <script src="./dist/bundle.js"></script> -->
 
-  <!--<script src='./workouta/define.js'></script>
-      <script src='./workouta/log.js'></script>
-      <script src='./dist/bundle.js'></script>  -->
 </body>
 </html>

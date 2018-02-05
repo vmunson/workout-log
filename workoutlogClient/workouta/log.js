@@ -39,7 +39,8 @@ $(function () {
                 var itsLog = {
                     desc: $("#log-description").val(),
                     result: $("#log-result").val(),
-                    def: $("#log-definition option:selected").text()
+                    def: $("#log-definition option:selected").text(),
+                    heart: $("#log-heart").val()
                 };
                 var postData = { log: itsLog };
                 var logger = $.ajax({
@@ -53,6 +54,7 @@ $(function () {
                     WorkoutLog.log.workouts.push(data);
                     $("#log-description").val("");
                     $("#log-result").val("");
+                    $("#log-heart").val("")
                     $('a[href="#history"]').tab("show");
 
 
@@ -71,7 +73,8 @@ $(function () {
                 }).done(function(data){
                     $('a[href="#update-log"]').tab("show");
 					$('#update-result').val(data.result);
-					$('#update-description').val(data.description);
+                    $('#update-description').val(data.description);
+                    $('#update-heart').val(data.heart)
 					$('#update-id').val(data.id);
                 })
             },
@@ -81,7 +84,8 @@ $(function () {
 					id: $('#update-id').val(),
 					desc: $("#update-description").val(),
 					result: $("#update-result").val(),
-					def: $("#update-definition option:selected").text()
+                    def: $("#update-definition option:selected").text(),
+                    heart: $("#update-heart").val()
 				};
 				for(var i = 0; i < WorkoutLog.log.workouts.length; i++){
 					if(WorkoutLog.log.workouts[i].id == updateLog.id){
@@ -98,7 +102,8 @@ $(function () {
 				}).done(function(data) {
 					console.log(data);
 					$("#update-description").val("");
-					$("#update-result").val("");
+                    $("#update-result").val("");
+                    $("#update-heart").val("")
 					$('a[href="#history"]').tab("show");
 				}).fail(
                     console.log('failure')

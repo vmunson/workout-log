@@ -8,7 +8,8 @@ router.post('/', function(req, res) {
     var description = req.body.log.desc;
     var result = req.body.log.result; 
     var user = req.user;
-    var definition = req.body.log.def;
+	var definition = req.body.log.def;
+	var heart = req.body.log.heart
 
     // Use our sequlize model to create user
    Log 
@@ -16,8 +17,9 @@ router.post('/', function(req, res) {
 	    	description: description,
 	    	result: result,
 	    	owner: user.id,
-	    	def: definition
-	    })
+			def: definition,
+			heart: heart	    
+		})
 	    .then(
 	    	function createSuccess(log) {
 	    		res.json(log);
@@ -64,12 +66,14 @@ router.put('/', function(req, res){
 	let result = req.body.log.result
 	let data = req.body.log.id
 	let definition =req.body.log.def
+	let heart = req.body.log.heart
 	console.log(req)
 	Log
 		.update({
 			description: description,
 			result: result,
-			def: definition
+			def: definition,
+			heart: heart
 		},
 		{where: {id: data}}
 	).then(
