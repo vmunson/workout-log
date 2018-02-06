@@ -23,12 +23,12 @@ $(function () {
                 for (var i = 0; i < len; i++) {
                     lis += "<li class='list-group-item'>" +
                         // history[i].id + " - " + 
-                        history[i].def + " - " +
-                        history[i].result + " " +
+                        history[i].date + " - " +
+                        history[i].def + " " +
                         // pass the log.id into the button's id attribute // watch your quotes!
-                        "<div class='pull-right'>" +
-                        "<button id='" + history[i].id + "' class='update'><strong>U</strong></button>" +
-                        "<button id='" + history[i].id + "' class='remove'><strong>X</strong></button>" +
+                        "<div class='pull-right' >" +
+                        "<button id='" + history[i].id + "' class='update btn'><strong>U</strong></button>" +
+                        "<button id='" + history[i].id + "' class='remove btn'><strong>X</strong></button>" +
                         "</div></li>";
 
                     $("#history-list").children().remove();
@@ -38,7 +38,9 @@ $(function () {
             create: function () {
                 var itsLog = {
                     desc: $("#log-description").val(),
-                    result: $("#log-result").val(),
+                    date: $("#log-date").val(),
+                    distance: $("#log-distance").val(),
+                    time: $("#log-time").val(),
                     def: $("#log-definition option:selected").text(),
                     heart: $("#log-heart").val()
                 };
@@ -51,9 +53,12 @@ $(function () {
                 });
 
                 logger.done(function (data) {
+                    // console.log(itsLog)
                     WorkoutLog.log.workouts.push(data);
-                    $("#log-description").val("");
-                    $("#log-result").val("");
+                    $("#log-description").val("")
+                    $('#log-date').val("")
+                    $("#log-distance").val("");
+                    $("#log-time").val("");
                     $("#log-heart").val("")
                     $('a[href="#history"]').tab("show");
 
@@ -72,7 +77,9 @@ $(function () {
                     contentType: 'application/json'
                 }).done(function(data){
                     $('a[href="#update-log"]').tab("show");
-					$('#update-result').val(data.result);
+                    $('#update-date').val(data.date)
+                    $('#update-distance').val(data.distance)
+					$('#update-time').val(data.time);
                     $('#update-description').val(data.description);
                     $('#update-heart').val(data.heart)
 					$('#update-id').val(data.id);
@@ -81,9 +88,11 @@ $(function () {
             updateWorkout: function() {
 				$("#update").text("Update");
 				var updateLog = { 
-					id: $('#update-id').val(),
-					desc: $("#update-description").val(),
-					result: $("#update-result").val(),
+                    id: $('#update-id').val(),
+                    desc: $("#update-description").val(),
+                    date: $("#update-date").val(),
+                    distance: $("#update-distance").val(),
+					time: $("#update-time").val(),
                     def: $("#update-definition option:selected").text(),
                     heart: $("#update-heart").val()
 				};
@@ -100,9 +109,12 @@ $(function () {
 						data: JSON.stringify(updateLogData),
 						contentType: "application/json"
 				}).done(function(data) {
-					console.log(data);
-					$("#update-description").val("");
-                    $("#update-result").val("");
+                    console.log(data);
+                    // console.log(updateLog)
+                    $("#update-description").val("");
+                    $("update-date").val("")
+                    $("update-distance").val("")
+                    $("#update-time").val("");
                     $("#update-heart").val("")
 					$('a[href="#history"]').tab("show");
 				}).fail(

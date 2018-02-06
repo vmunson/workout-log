@@ -74,7 +74,13 @@ $(function(){
        console.log("********app.js**********")
        console.log(token);
     }
- 
+    
+    // $( "#log-date" ).datepicker({
+    //     showOn: "button",
+    //     buttonImage: "images/calendar.gif",
+    //     buttonImageOnly: true,
+    //     buttonText: "Select date"
+    //   })
     // expose this to the other workoutlog modules
     window.WorkoutLog = WorkoutLog;
  });

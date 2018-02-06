@@ -5,8 +5,8 @@ var bodyParser = require('body-parser');
 var sequelize = require('./db');
 
 //Create table
-// User.sync(); // sync( {force: true}), to drop then create each time the app starts!
-sequelize.sync()
+sequelize.sync() 
+//sequelize.sync({force: true})
 
 app.use(bodyParser.json());
 app.use(require('./middleware/headers'));

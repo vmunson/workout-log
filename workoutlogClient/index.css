@@ -1,34 +1,141 @@
 body{
-    background-color: rgb(104, 130, 137)
+    background-image: url("./assets/img/josh-nuttall-271928.jpg")
 }
 .nav-tabs{
     background-color:whitesmoke;
 }
 
-a{
+.nav > li >a{
     background-color: rgb(255, 232, 191);
     color: black;
 }
-a:hover{
+.nav > li >a:hover{
     font-weight: bold;
 }
-#welcome{
+#home{
     height: 250px;
     width: 500px;
     background-color: rgb(0, 203, 255);
-    border: 5px solid black;
+    border: 5px solid white;
     position: relative;
     margin-left: auto;
     margin-right: auto;
     margin-top: 10%;
-    
-}
-#home{
     text-align: center;
-    position: relative;
 }
 #opening{
-    margin: 10%;
+    margin-top: 10%;
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 3em
+}
+#forLogin>button{
+    color: black;
+    font-weight: bold;
+    padding: 10px;
+    margin: 10px;
+}
+#define{
+    width: 500px;
+    background-color: rgb(0, 203, 255);
+    border: 5px solid white;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    text-align: center;
+}
+#define> .form-control{
+    width: 90%;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1em;
+}
+#def-save{
+    color: black;
+    font-weight: bold;
+    margin: 10px;
+}
+#define > h2{
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 3em;
+}
+#log{
+    width: 500px;
+    background-color: rgb(0, 203, 255);
+    border: 5px solid white;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    text-align: center;
+}
+#logForm> .form-control{
+    width: 90%;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1em;
+}
+#log-save{
+    color: black;
+    font-weight: bold;
+    margin: 10px;
+}
+#logForm > h2{
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 3em;
+}
+#update-log{
+    width: 500px;
+    background-color: rgb(0, 203, 255);
+    border: 5px solid white;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    text-align: center;
+}
+#updateForm> .form-control{
+    width: 90%;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1em;
+}
+#log-update{
+    color: black;
+    font-weight: bold;
+    margin: 10px;
+}
+#updateForm > h2{
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 3em;
+}
+#history{
+    width: 500px;
+    background-color: rgb(0, 203, 255);
+    border: 5px solid white;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    text-align: center;
+}
+#history > h2{
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 3em;
+}
+.list-group-item{
+    width: 90%;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+}
+p{
+    color: white;
+    position: fixed;
+    left: 45%;
+    top: 90%;
 }

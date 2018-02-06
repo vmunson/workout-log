@@ -5,8 +5,10 @@ var User = sequelize.import('../models/user');
 var Definition = sequelize.import('../models/definition');
 
 router.post('/', function(req, res) {
-    var description = req.body.log.desc;
-    var result = req.body.log.result; 
+	var description = req.body.log.desc;
+	var date = req.body.log.date
+	var distance = req.body.log.distance
+    var time = req.body.log.time; 
     var user = req.user;
 	var definition = req.body.log.def;
 	var heart = req.body.log.heart
@@ -14,8 +16,10 @@ router.post('/', function(req, res) {
     // Use our sequlize model to create user
    Log 
 	    .create({ 
-	    	description: description,
-	    	result: result,
+			description: description,
+			date: date,
+			distance: distance,
+	    	time: time,
 	    	owner: user.id,
 			def: definition,
 			heart: heart	    
@@ -63,7 +67,9 @@ router.get('/:id', function(req,res){
 })
 router.put('/', function(req, res){
 	let description = req.body.log.desc
-	let result = req.body.log.result
+	let date = req.body.log.date
+	let distance = req.body.log.distance
+	let time = req.body.log.time
 	let data = req.body.log.id
 	let definition =req.body.log.def
 	let heart = req.body.log.heart
@@ -71,7 +77,9 @@ router.put('/', function(req, res){
 	Log
 		.update({
 			description: description,
-			result: result,
+			date: date,
+			distance: distance,
+			time: time,
 			def: definition,
 			heart: heart
 		},
